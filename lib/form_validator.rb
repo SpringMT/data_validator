@@ -1,0 +1,49 @@
+# encoding: UTF-8
+
+require 'form_validator/version'
+require 'active_support/core_ext/object/blank'
+require 'i18n'
+
+module FormValidator
+  class Validator
+    attr_accessor :errors
+
+    def initialize(params, rules)
+      @params = params
+      @rules  = rules
+      @errors = {}
+    end
+
+    def valid?
+      @rules.each_pair do |key, rule|
+        next if @params[key].blank? && rule[:allow_blank]
+        # blnak nilの場合のcheck
+        rule.each_pair do |validator, options|
+          klass = "#{validator.capitalize}Validation"
+          #raise RuntimeError unless defined? "FormValidator::#{klass}"
+          constant   = Object
+          constant   = constant.const_get "FormValidator"
+          validation = constant.const_get(klass).new(key, @params[key], options, @errors)
+          validation.valid?
+        end
+      end
+      if error?
+        return false
+      else
+        return true
+      end
+    end
+
+    def error?
+      @errors.present?
+    end
+
+  end
+end
+
+Dir[File.dirname(__FILE__) + "/validations/*.rb"].sort.each do |path|
+  filename = File.basename(path)
+  require "validations/#{filename}"
+end
+
+
