@@ -1,15 +1,32 @@
 # encoding: UTF-8
 
 module FormValidator
-  class BaseValidation
-    attr_accessor :key, :value, :options, :errors
-    def initialize(key, value, options, errors)
-      @key     = key
+  class BaseValidator
+    attr_accessor :name, :value, :options, :errors
+    def initialize(name, value, options, errors)
+      raise ArgumentError "options must define" unless options
+
+      case options
+      when Hash
+        @options = options
+      else
+        @options = {}
+      end
+
+      @name    = name
       @value   = value
-      @options = options
       @errors  = errors
     end
+    def check_validity!
+    end
     def valid?
+    end
+    def error_add(error_message_key, message_args = {})
+      if errors.key? name
+        errors[name] << I18n.t("errors.messages.#{error_message_key.to_s}", message_args)
+      else
+        errors[name] = [I18n.t("errors.messages.#{error_message_key.to_s}", message_args)]
+      end
     end
   end
 end

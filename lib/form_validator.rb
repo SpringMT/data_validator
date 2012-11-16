@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 require 'form_validator/version'
-require 'active_support/core_ext/object/blank'
+require 'active_support/core_ext'
 require 'i18n'
 
 module FormValidator
@@ -17,13 +17,15 @@ module FormValidator
     def valid?
       @rules.each_pair do |key, rule|
         next if @params[key].blank? && rule[:allow_blank]
+        next if @params[key].nil? && rule[:allow_nil]
         # blnak nilの場合のcheck
         rule.each_pair do |validator, options|
-          klass = "#{validator.capitalize}Validation"
+          klass = "#{validator.capitalize}Validator"
           #raise RuntimeError unless defined? "FormValidator::#{klass}"
           constant   = Object
           constant   = constant.const_get "FormValidator"
           validation = constant.const_get(klass).new(key, @params[key], options, @errors)
+          validation.check_validity!
           validation.valid?
         end
       end

@@ -3,13 +3,13 @@
 require 'active_support/core_ext/object/blank'
 
 module FormValidator
-  class PresenceValidation < BaseValidation
+  class PresenceValidator < BaseValidator
     def valid?
       raise RuntimeError unless options
 
       if options && (value.nil? || value.blank?)
-        errors[key] = I18n.t 'errors.messages.blank'
-        false
+        error_add :blank
+        return false
       end
       true
     end

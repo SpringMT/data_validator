@@ -4,10 +4,10 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
 module FormValidator
-  class DummyValidation < BaseValidation
+  class DummyValidator < BaseValidator
     def valid?
       unless options
-        errors[key] = 'dummy error'
+        errors[name] = 'dummy error'
       end
       options
     end
