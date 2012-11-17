@@ -16,8 +16,8 @@ module DataValidator
 
     def valid?
       @rules.each_pair do |key, rule|
-        next if @params[key].blank? && rule[:allow_blank]
         next if @params[key].nil? && rule[:allow_nil]
+        next if @params[key].blank? && rule[:allow_blank]
         # blnak nilの場合のcheck
         rule.each_pair do |validator, options|
           klass = "#{validator.capitalize}Validator"
