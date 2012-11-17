@@ -3,10 +3,10 @@
 
 require File.join(File.dirname(__FILE__), '..' ,'spec_helper')
 
-describe FormValidator::PresenceValidator do
+describe DataValidator::PresenceValidator do
   context 'valid' do
     subject do
-      FormValidator::Validator.new(
+      DataValidator::Validator.new(
         {name: 'name'},
         {name: {presence: true}}
       ).valid?
@@ -14,11 +14,11 @@ describe FormValidator::PresenceValidator do
     it { should be_true }
   end
   context 'invalid' do
-    before { @obj = FormValidator::Validator.new({name: ''}, {name: {presence: true}}) }
+    before { @obj = DataValidator::Validator.new({name: ''}, {name: {presence: true}}) }
     it { @obj.valid?.should be_false }
     it do
       @obj.valid?
-      @obj.errors.should be_eql name: "can't be blank"
+      @obj.errors.should be_eql name: ["can't be blank"]
     end
   end
 end

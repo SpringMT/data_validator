@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-module FormValidator
+module DataValidator
   class NumericalityValidator < BaseValidator
     CHECKS = { :greater_than => :>, :greater_than_or_equal_to => :>=,
                :equal_to => :==, :less_than => :<, :less_than_or_equal_to => :<=,

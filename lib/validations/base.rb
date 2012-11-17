@@ -2,7 +2,7 @@
 
 require 'i18n'
 
-module FormValidator
+module DataValidator
   class BaseValidator
     attr_accessor :name, :value, :options, :errors
     def initialize(name, value, options, errors)

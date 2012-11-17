@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-module FormValidator
+module DataValidator
   class LengthValidator < BaseValidator
     MESSAGES  = { :is => :wrong_length, :minimum => :too_short, :maximum => :too_long }.freeze
     CHECKS    = { :is => :==, :minimum => :>=, :maximum => :<= }.freeze

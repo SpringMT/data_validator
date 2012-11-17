@@ -3,11 +3,11 @@
 
 require File.join(File.dirname(__FILE__), '..' ,'spec_helper')
 
-describe FormValidator::LengthValidator do
+describe DataValidator::LengthValidator do
   context 'valid' do
     context 'is' do
       subject do
-        FormValidator::Validator.new(
+        DataValidator::Validator.new(
           {name: "123"},
           {name: {numericality: true}}
         ).valid?
@@ -16,7 +16,7 @@ describe FormValidator::LengthValidator do
     end
     context 'greater_than' do
       subject do
-        FormValidator::Validator.new(
+        DataValidator::Validator.new(
           {name: "123"},
           {name: {numericality: {greater_than: 100}}}
         ).valid?

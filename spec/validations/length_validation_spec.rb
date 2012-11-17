@@ -3,11 +3,11 @@
 
 require File.join(File.dirname(__FILE__), '..' ,'spec_helper')
 
-describe FormValidator::LengthValidator do
+describe DataValidator::LengthValidator do
   context 'valid' do
     context 'is' do
       subject do
-        FormValidator::Validator.new(
+        DataValidator::Validator.new(
           {name: 'name'},
           {name: {length: {is: 4}}}
         ).valid?
@@ -16,7 +16,7 @@ describe FormValidator::LengthValidator do
     end
     context 'is with token' do
       subject do
-        FormValidator::Validator.new(
+        DataValidator::Validator.new(
           {name: 'i am test name'},
           {name: {length: {is: 4, :tokenizer => lambda { |str| str.scan(/\w+/) }}}}
         ).valid?
@@ -25,7 +25,7 @@ describe FormValidator::LengthValidator do
     end
     context 'maximum minimum' do
       subject do
-        FormValidator::Validator.new(
+        DataValidator::Validator.new(
           {name: 'name'},
           {name: {length: {maximum: 100, minimum: 2}}}
         ).valid?
@@ -34,7 +34,7 @@ describe FormValidator::LengthValidator do
     end
     context 'in' do
       subject do
-        FormValidator::Validator.new(
+        DataValidator::Validator.new(
           {name: 'name'},
           {name: {length: {in: 3..7}}}
         ).valid?

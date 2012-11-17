@@ -3,11 +3,11 @@
 
 require File.join(File.dirname(__FILE__), '..' ,'spec_helper')
 
-describe FormValidator::AcceptanceValidator do
+describe DataValidator::AcceptanceValidator do
   context 'valid' do
     context 'acceptance' do
       subject do
-        FormValidator::Validator.new(
+        DataValidator::Validator.new(
           {terms_of_service: "1"},
           {terms_of_service: {acceptance: true}}
         ).valid?

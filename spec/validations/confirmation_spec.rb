@@ -3,12 +3,12 @@
 
 require File.join(File.dirname(__FILE__), '..' ,'spec_helper')
 
-describe FormValidator::AcceptanceValidator do
+describe DataValidator::AcceptanceValidator do
   context 'valid' do
     context 'confirmation' do
       subject do
         params = {password: "password", password_confirmation: "password"}
-        FormValidator::Validator.new(
+        DataValidator::Validator.new(
           params,
           {
             passwrod: {confirmation: params[:password_confirmation]},

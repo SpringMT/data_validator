@@ -3,11 +3,11 @@
 
 require File.join(File.dirname(__FILE__), '..' ,'spec_helper')
 
-describe FormValidator::FormatValidator do
+describe DataValidator::FormatValidator do
   context 'valid' do
     context 'with' do
       subject do
-        FormValidator::Validator.new(
+        DataValidator::Validator.new(
           {name: "abc"},
           {name: {format: {with: /\A[a-zA-Z]+\z/}}}
         ).valid?
@@ -16,7 +16,7 @@ describe FormValidator::FormatValidator do
     end
     context 'greater_than' do
       subject do
-        FormValidator::Validator.new(
+        DataValidator::Validator.new(
           {name: "123"},
           {name: {format: {without: /\A[a-zA-Z]+\z/}}}
         ).valid?

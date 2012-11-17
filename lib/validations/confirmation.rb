@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-module FormValidator
+module DataValidator
   class ConfirmationValidator < BaseValidator
     def validate
       if value != options[:criterion]

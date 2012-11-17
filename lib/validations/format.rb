@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-module FormValidator
+module DataValidator
   class FormatValidator < BaseValidator
     def check_validity!
       unless options.include?(:with) ^ options.include?(:without)  # ^ == xor, or "exclusive or"

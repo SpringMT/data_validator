@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-module FormValidator
+module DataValidator
   class AcceptanceValidator < BaseValidator
     def initialize(name, value, options, errors)
       raise ArgumentError, "options must define" unless options

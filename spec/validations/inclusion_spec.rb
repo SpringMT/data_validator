@@ -3,11 +3,11 @@
 
 require File.join(File.dirname(__FILE__), '..' ,'spec_helper')
 
-describe FormValidator::InclusionValidator do
+describe DataValidator::InclusionValidator do
   context 'valid' do
     context 'is' do
       subject do
-        FormValidator::Validator.new(
+        DataValidator::Validator.new(
           {name: 'name'},
           {name: {inclusion: {in: ['name', 'hoge']}}}
         ).valid?

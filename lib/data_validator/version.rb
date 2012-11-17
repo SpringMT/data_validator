@@ -1,3 +1,3 @@
-module FormValidator
+module DataValidator
   VERSION = "0.0.1"
 end

@@ -1,10 +1,10 @@
 # encoding: UTF-8
 
-require 'form_validator/version'
+require 'data_validator/version'
 require 'active_support/core_ext'
 require 'validations/base'
 
-module FormValidator
+module DataValidator
   class Validator
     attr_accessor :errors
 
@@ -23,7 +23,7 @@ module FormValidator
           klass = "#{validator.capitalize}Validator"
           #raise RuntimeError unless defined? "FormValidator::#{klass}"
           constant   = Object
-          constant   = constant.const_get "FormValidator"
+          constant   = constant.const_get "DataValidator"
           validation = constant.const_get(klass).new(key, @params[key], options, @errors)
           validation.check_validity!
           validation.validate

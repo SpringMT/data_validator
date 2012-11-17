@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-module FormValidator
+module DataValidator
   class PresenceValidator < BaseValidator
     def validate
       raise RuntimeError unless options

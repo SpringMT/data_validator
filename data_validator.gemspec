@@ -1,17 +1,17 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "form_validator/version"
+require "data_validator/version"
 
 Gem::Specification.new do |s|
-  s.name        = "form_validator"
-  s.version     = FormValidator::VERSION
+  s.name        = "data_validator"
+  s.version     = DataValidator::VERSION
   s.authors     = ["Spring_MT"]
   s.email       = ["today.is.sky.blue.sky@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{TODO: Write a gem summary}
   s.description = %q{TODO: Write a gem description}
 
-  s.rubyforge_project = "form_validator"
+  s.rubyforge_project = "data_validator"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

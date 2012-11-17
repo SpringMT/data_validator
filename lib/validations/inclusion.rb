@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-module FormValidator
+module DataValidator
   class InclusionValidator < BaseValidator
     ERROR_MESSAGE = "An object with the method #include? or a proc or lambda is required, " <<
                       "and must be supplied as the :in option of the configuration hash"
