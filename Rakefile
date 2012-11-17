@@ -1,5 +1,7 @@
 require "bundler/gem_tasks"
 
+task :default => :test
+
 task :test do
   require 'rspec/core'
   require 'rspec/core/rake_task'
