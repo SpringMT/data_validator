@@ -1,7 +1,5 @@
 # encoding: UTF-8
 
-require 'active_support/core_ext/hash/except'
-
 module FormValidator
   class LengthValidator < BaseValidator
     MESSAGES  = { :is => :wrong_length, :minimum => :too_short, :maximum => :too_long }.freeze
@@ -29,7 +27,7 @@ module FormValidator
       end
     end
 
-    def valid?
+    def validate
       tokenized_value = tokenize value
       value_length = tokenized_value.respond_to?(:length) ? tokenized_value.length : tokenized_value.to_s.length
 
@@ -38,7 +36,6 @@ module FormValidator
         next if value_length.send(validity_check, check_value)
         error_add MESSAGES[key], count: check_value
       end
-      return (errors.key? name) ? false : true
     end
 
     private

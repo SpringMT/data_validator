@@ -1,7 +1,5 @@
 # encoding: UTF-8
 
-require 'active_support/core_ext/hash/except'
-
 module FormValidator
   class InclusionValidator < BaseValidator
     ERROR_MESSAGE = "An object with the method #include? or a proc or lambda is required, " <<
@@ -13,7 +11,7 @@ module FormValidator
       end
     end
 
-    def valid?
+    def validate
       delimiter = options[:in]
       unless delimiter.send(inclusion_method(delimiter), value)
         error_add :inclusion, value: value

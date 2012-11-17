@@ -2,7 +2,7 @@
 
 require 'form_validator/version'
 require 'active_support/core_ext'
-require 'i18n'
+require 'validations/base'
 
 module FormValidator
   class Validator
@@ -26,7 +26,7 @@ module FormValidator
           constant   = constant.const_get "FormValidator"
           validation = constant.const_get(klass).new(key, @params[key], options, @errors)
           validation.check_validity!
-          validation.valid?
+          validation.validate
         end
       end
       if error?

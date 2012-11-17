@@ -1,10 +1,12 @@
 # encoding: UTF-8
 
+require 'i18n'
+
 module FormValidator
   class BaseValidator
     attr_accessor :name, :value, :options, :errors
     def initialize(name, value, options, errors)
-      raise ArgumentError "options must define" unless options
+      raise ArgumentError, "options must define" unless options
 
       case options
       when Hash
@@ -19,7 +21,8 @@ module FormValidator
     end
     def check_validity!
     end
-    def valid?
+    def validate
+      raise ArgumentError, "validate method is necessary"
     end
     def error_add(error_message_key, message_args = {})
       if errors.key? name

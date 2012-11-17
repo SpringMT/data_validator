@@ -1,5 +1,4 @@
 # encoding: UTF-8
-require 'active_support/core_ext'
 
 module FormValidator
   class NumericalityValidator < BaseValidator
@@ -15,16 +14,16 @@ module FormValidator
       end
     end
 
-    def valid?
+    def validate
       unless checked_value = parse_raw_value_as_a_number(value)
         error_add MESSAGES[key], check_value
-        return false
+        return
       end
 
       if options[:only_integer]
         unless checked_value = parse_raw_value_as_an_integer(checked_value)
           error_add :not_an_integer, value: checked_value
-          return false
+          return
         end
       end
 
@@ -42,7 +41,6 @@ module FormValidator
           end
         end
       end
-      return (errors.key? name) ? false : true
     end
 
     protected
