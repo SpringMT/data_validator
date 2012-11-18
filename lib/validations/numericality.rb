@@ -8,21 +8,21 @@ module DataValidator
 
     def check_validity!
       keys = CHECKS.keys - [:odd, :even]
-      options.slice(*keys).each do |option, value|
-        next if value.is_a?(Numeric) || value.is_a?(Proc)
+      options.slice(*keys).each do |option, option_value|
+        next if option_value.is_a?(Numeric) || option_value.is_a?(Proc)
         raise ArgumentError, ":#{option} must be a number, a symbol or a proc"
       end
     end
 
     def validate
       unless checked_value = parse_raw_value_as_a_number(value)
-        error_add MESSAGES[key], check_value
+        error_add :not_a_number
         return
       end
 
       if options[:only_integer]
-        unless checked_value = parse_raw_value_as_an_integer(checked_value)
-          error_add :not_an_integer, value: checked_value
+        unless checked_value = parse_raw_value_as_an_integer(value)
+          error_add :not_an_integer
           return
         end
       end
@@ -31,13 +31,12 @@ module DataValidator
         case option
         when :odd, :even
           unless checked_value.to_i.send(CHECKS[option])
-            error_add option, value: checked_value
+            error_add option
           end
         else
           option_value = option_value.call(record) if option_value.is_a?(Proc)
-
           unless checked_value.send(CHECKS[option], option_value)
-            error_add option, count: checked_value
+            error_add option, count: option_value
           end
         end
       end

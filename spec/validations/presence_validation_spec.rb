@@ -4,7 +4,7 @@
 require File.join(File.dirname(__FILE__), '..' ,'spec_helper')
 
 describe DataValidator::PresenceValidator do
-  context 'valid' do
+  context 'validtion true' do
     subject do
       DataValidator::Validator.new(
         {name: 'name'},
@@ -13,12 +13,12 @@ describe DataValidator::PresenceValidator do
     end
     it { should be_true }
   end
-  context 'invalid' do
+  context 'validation false' do
     before { @obj = DataValidator::Validator.new({name: ''}, {name: {presence: true}}) }
     it { @obj.valid?.should be_false }
     it do
       @obj.valid?
-      @obj.errors.should be_eql name: ["can't be blank"]
+      @obj.errors.should eql({name: ["can't be blank"]})
     end
   end
 end

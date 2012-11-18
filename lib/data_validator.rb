@@ -16,19 +16,21 @@ module DataValidator
 
     def valid?
       @rules.each_pair do |key, rule|
-        next if @params[key].nil? && rule[:allow_nil]
-        next if @params[key].blank? && rule[:allow_blank]
-        # blnak nilの場合のcheck
+        is_allow_nil   = rule.delete :allow_nil
+        is_allow_blank = rule.delete :allow_blank
+        next if @params[key].nil? && is_allow_nil
+        next if @params[key].blank? && is_allow_blank
+
         rule.each_pair do |validator, options|
           klass = "#{validator.capitalize}Validator"
-          #raise RuntimeError unless defined? "FormValidator::#{klass}"
           constant   = Object
           constant   = constant.const_get "DataValidator"
-          validation = constant.const_get(klass).new(key, @params[key], options, @errors)
+          validation = constant.const_get(klass).new(key, @params[key], options, errors)
           validation.check_validity!
           validation.validate
         end
       end
+
       if error?
         return false
       else
@@ -37,7 +39,7 @@ module DataValidator
     end
 
     def error?
-      @errors.present?
+      errors.present?
     end
 
   end
