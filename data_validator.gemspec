@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency 'active_support', '~> 3.0.0'
-  s.add_dependency 'i18n', '~> 0.6.1'
+  s.add_dependency 'i18n', '~> 0.6.0'
 
   s.description = <<description
     DataValidator has almost active_recorde validation methods.
