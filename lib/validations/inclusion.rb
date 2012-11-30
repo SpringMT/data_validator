@@ -19,9 +19,6 @@ module DataValidator
     end
 
     private
-    # In Ruby 1.9 <tt>Range#include?</tt> on non-numeric ranges checks all possible values in the
-    # range for equality, so it may be slow for large ranges. The new <tt>Range#cover?</tt>
-    # uses the previous logic of comparing a value with the range endpoints.
     def inclusion_method(enumerable)
       enumerable.is_a?(Range) ? :cover? : :include?
     end
