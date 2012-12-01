@@ -32,7 +32,7 @@ describe DataValidator::AcceptanceValidator do
     it { @obj.valid?.should be_false }
     it do
       @obj.valid?
-      @obj.errors.should eql({terms_of_service: ["must be accepted"]})
+      @obj.errors.should eql({terms_of_service: ["terms_of_service must be accepted"]})
     end
   end
 end

@@ -26,7 +26,7 @@ describe DataValidator::InclusionValidator do
     it {@obj.valid?.should be_false}
     it do
       @obj.valid?
-      @obj.errors.should eql({name: ["is not included in the list"]})
+      @obj.errors.should eql({name: ["name is not included in the list"]})
     end
   end
 

@@ -54,7 +54,7 @@ describe DataValidator::LengthValidator do
       it { @obj.valid?.should be_false }
       it do
         @obj.valid?
-        @obj.errors.should eql({name: ["is the wrong length (should be 5 characters)"]})
+        @obj.errors.should eql({name: ["name is the wrong length (should be 5 characters)"]})
       end
     end
     context 'maximum' do
@@ -67,7 +67,7 @@ describe DataValidator::LengthValidator do
       it { @obj.valid?.should be_false }
       it do
         @obj.valid?
-        @obj.errors.should eql({name: ["is too long (maximum is 2 characters)"]})
+        @obj.errors.should eql({name: ["name is too long (maximum is 2 characters)"]})
       end
     end
     context 'minimum' do
@@ -80,7 +80,7 @@ describe DataValidator::LengthValidator do
       it { @obj.valid?.should be_false }
       it do
         @obj.valid?
-        @obj.errors.should eql({name: ["is too short (minimum is 5 characters)"]})
+        @obj.errors.should eql({name: ["name is too short (minimum is 5 characters)"]})
       end
     end
   end

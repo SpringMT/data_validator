@@ -28,7 +28,7 @@ If you use rails, you not worry about locale file.
 Ex)
 
 ~~~
-# encoding: UTF-8                                                                                                                           
+# encoding: UTF-8
 
 module DataValidator
   class TestValidator < BaseValidator
@@ -47,7 +47,9 @@ BaseValidator set accessors below.
 * value   : validating paramter value
 * options : validation rules
 
-Please see test case.
+Please see test case.  
+
+An error message subject uses "datavalidator.attribute.#{name}" in i18n locale file or name.
 
 
 ## Installation

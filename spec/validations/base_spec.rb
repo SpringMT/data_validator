@@ -29,14 +29,14 @@ describe DataValidator::BaseValidator do
     context 'add an error first' do
       it do
         @obj.error_add(:blank)
-        @obj.errors.should eql({name: ["can't be blank"]})
+        @obj.errors.should eql({name: ["name can't be blank"]})
       end
     end
     context 'add an errors secondly' do
       it do
         @obj.error_add(:blank)
         @obj.error_add(:invalid)
-        @obj.errors.should eql({name: ["can't be blank", "is invalid"]})
+        @obj.errors.should eql({name: ["name can't be blank", "name is invalid"]})
       end
     end
   end

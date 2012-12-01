@@ -31,7 +31,7 @@ describe DataValidator::AcceptanceValidator do
     it { @obj.valid?.should be_false }
     it do
       @obj.valid?
-      @obj.errors.should eql({password: ["doesn't match confirmation"]})
+      @obj.errors.should eql({password: ["password doesn't match confirmation"]})
     end
   end
 end

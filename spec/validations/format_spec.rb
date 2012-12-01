@@ -36,7 +36,7 @@ describe DataValidator::FormatValidator do
       it { @obj.valid?.should be_false }
       it do
         @obj.valid?
-        @obj.errors.should eql({name: ["is invalid"]})
+        @obj.errors.should eql({name: ["name is invalid"]})
       end
     end
     context 'without' do
@@ -49,7 +49,7 @@ describe DataValidator::FormatValidator do
       it { @obj.valid?.should be_false }
       it do
         @obj.valid?
-        @obj.errors.should eql({name: ["is invalid"]})
+        @obj.errors.should eql({name: ["name is invalid"]})
       end
     end
   end

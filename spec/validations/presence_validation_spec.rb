@@ -18,7 +18,7 @@ describe DataValidator::PresenceValidator do
     it { @obj.valid?.should be_false }
     it do
       @obj.valid?
-      @obj.errors.should eql({name: ["can't be blank"]})
+      @obj.errors.should eql({name: ["name can't be blank"]})
     end
   end
 end

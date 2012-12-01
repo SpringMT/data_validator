@@ -63,63 +63,63 @@ describe DataValidator::LengthValidator do
         {num: "test"},
         {num: {numericality: true}},
         :num,
-        "is not a number"
+        "num is not a number"
     end
     context 'greater_than' do
       it_behaves_like :validtion_false,
         {num: "100"},
         {num: {numericality: {greater_than: 100}}},
         :num,
-        "must be greater than 100"
+        "num must be greater than 100"
     end
     context 'greater_than_or_equal_to' do
       it_behaves_like :validtion_false,
         {num: "99.9"},
         {num: {numericality: {greater_than_or_equal_to: 100}}},
         :num,
-        "must be greater than or equal to 100"
+        "num must be greater than or equal to 100"
     end
     context 'equal_to' do
       it_behaves_like :validtion_false,
         {num: "99"},
         {num: {numericality: {equal_to: 100}}},
         :num,
-        "must be equal to 100"
+        "num must be equal to 100"
     end
     context 'less_than' do
       it_behaves_like :validtion_false,
         {num: "100"},
         {num: {numericality: {less_than: 100}}},
         :num,
-        "must be less than 100"
+        "num must be less than 100"
     end
     context 'less_than_or_equal_to' do
       it_behaves_like :validtion_false,
         {num: "100.1"},
         {num: {numericality: {less_than_or_equal_to: 100}}},
         :num,
-        "must be less than or equal to 100"
+        "num must be less than or equal to 100"
     end
     context 'odd' do
       it_behaves_like :validtion_false,
         {num: "100"},
         {num: {numericality: {odd: true}}},
         :num,
-        "must be odd"
+        "num must be odd"
     end
     context 'even' do
       it_behaves_like :validtion_false,
         {num: "101"},
         {num: {numericality: {even: true}}},
         :num,
-        "must be even"
+        "num must be even"
     end
     context 'only_integer' do
       it_behaves_like :validtion_false,
         {num: "1.001"},
         {num: {numericality: {only_integer: true}}},
         :num,
-        "is not an integer"
+        "num is not an integer"
     end
   end
 
