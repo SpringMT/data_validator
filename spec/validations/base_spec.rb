@@ -24,18 +24,18 @@ describe DataValidator::BaseValidator do
     end
   end
 
-  describe :error_add do
+  describe :add_error do
     before { @obj = DataValidator::BaseValidator.new(:name, 'value', true, {}) }
     context 'add an error first' do
       it do
-        @obj.error_add(:blank)
+        @obj.add_error(:blank)
         @obj.errors.should eql({name: ["name can't be blank"]})
       end
     end
     context 'add an errors secondly' do
       it do
-        @obj.error_add(:blank)
-        @obj.error_add(:invalid)
+        @obj.add_error(:blank)
+        @obj.add_error(:invalid)
         @obj.errors.should eql({name: ["name can't be blank", "name is invalid"]})
       end
     end

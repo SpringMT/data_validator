@@ -12,9 +12,9 @@ module DataValidator
 
     def validate
       if regexp = options[:with]
-        error_add :invalid if value.to_s !~ regexp
+        add_error :invalid if value.to_s !~ regexp
       elsif regexp = options[:without]
-        error_add :invalid if value.to_s =~ regexp
+        add_error :invalid if value.to_s =~ regexp
       end
     end
 

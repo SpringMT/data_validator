@@ -15,7 +15,7 @@ module DataValidator
 
     def validate
       unless value == options[:accept]
-        error_add :accepted
+        add_error :accepted
       end
     end
 

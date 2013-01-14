@@ -14,7 +14,7 @@ module DataValidator
     def validate
       delimiter = options[:in]
       unless delimiter.send(inclusion_method(delimiter), value)
-        error_add :inclusion, value: value
+        add_error :inclusion, value: value
       end
     end
 

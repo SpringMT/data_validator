@@ -16,13 +16,13 @@ module DataValidator
 
     def validate
       unless checked_value = parse_raw_value_as_a_number(value)
-        error_add :not_a_number
+        add_error :not_a_number
         return
       end
 
       if options[:only_integer]
         unless checked_value = parse_raw_value_as_an_integer(value)
-          error_add :not_an_integer
+          add_error :not_an_integer
           return
         end
       end
@@ -31,12 +31,12 @@ module DataValidator
         case option
         when :odd, :even
           unless checked_value.to_i.send(CHECKS[option])
-            error_add option
+            add_error option
           end
         else
           option_value = option_value.call(record) if option_value.is_a?(Proc)
           unless checked_value.send(CHECKS[option], option_value)
-            error_add option, count: option_value
+            add_error option, count: option_value
           end
         end
       end

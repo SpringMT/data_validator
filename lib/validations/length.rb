@@ -32,7 +32,7 @@ module DataValidator
       CHECKS.each do |key, validity_check|
         next unless check_value = options[key]
         next if value_length.send(validity_check, check_value)
-        error_add MESSAGES[key], count: check_value
+        add_error MESSAGES[key], count: check_value
       end
     end
 
