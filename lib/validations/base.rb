@@ -38,9 +38,9 @@ module DataValidator
       end
 
       if errors.key? name
-        errors[name] << "#{error_subject} #{I18n.t("errors.messages.#{error_message_key.to_s}", message_args)}"
+        errors[name] << "#{error_subject} #{I18n.t("datavalidator.errors.messages.#{error_message_key.to_s}", message_args)}"
       else
-        errors[name] = ["#{error_subject} #{I18n.t("errors.messages.#{error_message_key.to_s}", message_args)}"]
+        errors[name] = ["#{error_subject} #{I18n.t("datavalidator.errors.messages.#{error_message_key.to_s}", message_args)}"]
       end
     end
   end
