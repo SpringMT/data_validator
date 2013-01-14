@@ -14,7 +14,16 @@ describe DataValidator::InclusionValidator do
       end
       it { should be_true }
     end
-  end
+    context 'in' do
+      subject do
+        DataValidator::Validator.new(
+          {name: '0'},
+          {name: {inclusion: {in: ['0', '1']}}}
+        ).valid?
+      end
+      it { should be_true }
+    end
+ end
 
   context 'validation false' do
     before do
