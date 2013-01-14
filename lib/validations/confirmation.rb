@@ -4,7 +4,7 @@ module DataValidator
   class ConfirmationValidator < BaseValidator
     def validate
       if value != options[:criterion]
-        error_add :confirmation
+        add_error :confirmation
       end
     end
   end

@@ -28,7 +28,7 @@ module DataValidator
       raise ArgumentError, "Validate method is necessary"
     end
 
-    def error_add(error_message_key, message_args = {})
+    def add_error(error_message_key, message_args = {})
       error_subject_key = "datavalidator.attribute.#{name}"
       error_subject = ''
       begin
