@@ -45,7 +45,8 @@ module DataValidator
   end
 end
 
-I18n.load_path += Dir[File.join(File.dirname(__FILE__), '..', 'locale', '*.{rb,yml}')]
+I18n.load_path += Dir[File.join(File.dirname(__FILE__), '..', 'locales', '*.{rb,yml}')]
+
 Dir[File.dirname(__FILE__) + "/validations/*.rb"].sort.each do |path|
   filename = File.basename(path)
   require "validations/#{filename}"

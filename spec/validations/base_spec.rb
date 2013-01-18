@@ -39,6 +39,14 @@ describe DataValidator::BaseValidator do
         @obj.errors.should eql({name: ["name can't be blank", "name is invalid"]})
       end
     end
+    context 'non default locale error message' do
+      it do
+        I18n.locale = :jp
+        @obj.add_error(:blank)
+        @obj.errors.should eql({name: ["名前 は必須項目です"]})
+      end
+      after { I18n.locale = :en }
+    end
   end
 end
 

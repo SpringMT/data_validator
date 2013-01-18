@@ -1,0 +1,8 @@
+jp:
+  datavalidator:
+    errors:
+      messages:
+        blank: "は必須項目です"
+      subjects:
+        name: "名前"
+

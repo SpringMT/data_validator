@@ -7,7 +7,7 @@ module DataValidator
     attr_accessor :name, :value, :options, :errors
 
     def initialize(name, value, options, errors)
-      raise ArgumentError, "Options must define" if options.blank?
+      raise ArgumentError, 'Options must define' if options.blank?
 
       case options
       when Hash
@@ -25,14 +25,14 @@ module DataValidator
     end
 
     def validate
-      raise ArgumentError, "Validate method is necessary"
+      raise ArgumentError, 'Validate method is necessary'
     end
 
     def add_error(error_message_key, message_args = {})
-      error_subject_key = "datavalidator.attribute.#{name}"
+      error_subject_key = "datavalidator.errors.subjects.#{name}"
       error_subject = ''
       begin
-        error_subject = I18n.t! "datavalidator.attribute.#{name}"
+        error_subject = I18n.t! "datavalidator.errors.subjects.#{name}"
       rescue
         error_subject = name.to_s
       end
