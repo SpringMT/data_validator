@@ -3,7 +3,7 @@
 module DataValidator
   class AcceptanceValidator < BaseValidator
     def initialize(name, value, options, errors)
-      raise ArgumentError, "options must define" unless options
+      raise ArgumentError, 'Options must define' unless options
       case options
       when Hash
         options_base = options

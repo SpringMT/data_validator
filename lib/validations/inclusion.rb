@@ -2,8 +2,8 @@
 
 module DataValidator
   class InclusionValidator < BaseValidator
-    ERROR_MESSAGE = "An object with the method #include? or a proc or lambda is required, " <<
-                      "and must be supplied as the :in option of the configuration hash"
+    ERROR_MESSAGE = 'An object with the method #include? or a proc or lambda is required, ' <<
+                      'and must be supplied as the :in option of the configuration hash'
 
     def check_validity!
       unless [:include?, :call].any?{ |method| options[:in].respond_to?(method) }

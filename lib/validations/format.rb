@@ -4,7 +4,7 @@ module DataValidator
   class FormatValidator < BaseValidator
     def check_validity!
       unless options.include?(:with) ^ options.include?(:without)  # ^ == xor, or "exclusive or"
-        raise ArgumentError, "Either :with or :without must be supplied (but not both)"
+        raise ArgumentError, 'Either :with or :without must be supplied (but not both)'
       end
       check_options_validity(options, :with)
       check_options_validity(options, :without)
