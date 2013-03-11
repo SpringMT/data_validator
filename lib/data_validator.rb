@@ -25,7 +25,7 @@ module DataValidator
           klass = "#{validator.to_s.camelize}Validator"
           constant   = Object
           constant   = constant.const_get "DataValidator"
-          validation = constant.const_get(klass).new(key, @params[key], options, errors)
+          validation = constant.const_get(klass, false).new(key, @params[key], options, errors)
           validation.check_validity!
           validation.validate
         end
