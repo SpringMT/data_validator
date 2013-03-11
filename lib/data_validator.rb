@@ -22,7 +22,7 @@ module DataValidator
         next if @params[key].blank? && is_allow_blank
 
         rule.each_pair do |validator, options|
-          klass = "#{validator.capitalize}Validator"
+          klass = "#{validator.to_s.camelize}Validator"
           constant   = Object
           constant   = constant.const_get "DataValidator"
           validation = constant.const_get(klass).new(key, @params[key], options, errors)
